@@ -2,7 +2,6 @@ package com.AppRH.AppRH.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-
 @Entity
 public class Candidato {
 
@@ -21,6 +20,15 @@ public class Candidato {
 
     @ManyToOne
     private Vaga vaga;
+
+    // Getter e Setter do id
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getRg() {
         return rg;
