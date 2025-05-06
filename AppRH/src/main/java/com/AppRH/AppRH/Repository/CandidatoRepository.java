@@ -6,16 +6,18 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface CandidatoRepository  extends CrudRepository<Candidato, Long> {
+public interface CandidatoRepository extends CrudRepository<Candidato, Long> {
 
     Iterable<Candidato> findByVaga(Vaga vaga);
 
     Candidato findByRg(String rg);
 
+
     Candidato findById(long id);
 
-    List<Candidato> findByNomeCandidato(String nomeCandidato);
+    List<Candidato> findByNome(String nome);
 
 }
