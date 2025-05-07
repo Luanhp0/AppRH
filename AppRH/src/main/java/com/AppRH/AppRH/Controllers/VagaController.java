@@ -19,7 +19,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class VagaController {
 
+    @Autowired
     private VagaRepository vr;
+    @Autowired
     private CandidatoRepository cr;
 
     // Cadastrar vaga
@@ -50,7 +52,7 @@ public class VagaController {
         return mv;
     }
 
-    @RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{codigo}", method = RequestMethod.GET,  name = "VC#detalhesVaga")
     public ModelAndView detalhesVaga(@PathVariable("codigo") long codigo){
         Vaga vaga = vr.findByCodigo(codigo);
         ModelAndView mv = new ModelAndView("vaga/detalhesVaga");
