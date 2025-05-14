@@ -72,15 +72,17 @@ public class VagaController {
         return "redirect:/vagas";
     }
 
-
+    //Adicionar candidato
+    @RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
     public String detalhesVagaPost(@PathVariable("codigo")long codigo, @Valid Candidato candidato, BindingResult result, RedirectAttributes attributes){
+
         if(result.hasErrors()){
             attributes.addFlashAttribute("mensagem","Verifique os campos ");
             return "redirect:/{codigo}";
         }
         // rg duplicado
         if(cr.findByRg(candidato.getRg()) != null){
-            attributes.addFlashAttribute("mensagem erro", "RG duplicado");
+            attributes.addFlashAttribute("mensagem_erro", "RG duplicado");
             return "redirect:/{codigo}";
         }
 
@@ -119,7 +121,7 @@ public class VagaController {
         vr.save(vaga);
         attributes.addFlashAttribute("success","Vaga alterada com sucesso!");
         long codigoLong = vaga.getCodigo();
-        String codigo = ""+codigoLong;
+        String codigo = "" + codigoLong;
         return "redirect:/" + codigo;
     }
 
